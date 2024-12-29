@@ -22,7 +22,8 @@
     "build": "tsc",
     "clean": "rm -rf dist",
     "dev": "tsx watch src/index.ts",
-    "setup": "bash scripts/setup.sh"
+    "setup": "bash scripts/setup.sh",
+    "push": "git push --follow-tags origin HEAD"
   },
   "config": {
     "commitizen": {
