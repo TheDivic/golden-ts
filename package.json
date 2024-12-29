@@ -1,8 +1,12 @@
 {
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "commit": "cz",
-    "branch": "tsx scripts/create-branch.ts"
+    "branch": "tsx scripts/create-branch.ts",
+    "branches:merged": "git branch --merged main",
+    "branches:pending": "git branch --no-merged main",
+    "branches:clean": "git branch --merged main | grep -v '^[ *]*main$' | xargs git branch -d",
+    "test": ""
   },
   "config": {
     "commitizen": {
