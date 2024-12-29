@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "postinstall": "husky"
+    "prepare": "husky install",
+    "commit": "cz",
+    "branch": "tsx scripts/create-branch.ts"
   },
   "config": {
     "commitizen": {
@@ -10,6 +12,10 @@
   "devDependencies": {
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "@types/node": "^20.0.0",
+    "enquirer": "^2.3.6",
+    "tsx": "^4.7.0",
+    "typescript": "^5.0.0"
   }
 }

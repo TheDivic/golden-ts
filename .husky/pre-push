@@ -9,3 +9,20 @@ then
     echo "Direct push to $protected_branch branch is not allowed. Please create a pull request instead."
     exit 1
 fi
+
+# Branch naming convention check
+BRANCH_REGEX="^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert)\/[a-z0-9-\/]+$"
+
+if ! echo "$current_branch" | grep -Eq "$BRANCH_REGEX"; then
+    echo "ERROR: Branch name doesn't match conventional format."
+    echo "Branch names should:"
+    echo "- Start with type (feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert)"
+    echo "- Followed by /"
+    echo "- End with kebab-case description (can include additional path segments)"
+    echo ""
+    echo "Examples:"
+    echo "  feat/user-authentication"
+    echo "  fix/api/memory-leak"
+    echo "  ci/conventional-branch"
+    exit 1
+fi
