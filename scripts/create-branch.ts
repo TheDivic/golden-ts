@@ -43,17 +43,11 @@ async function main() {
         name: "description",
         message: "Enter a brief description (use-kebab-case):",
         validate: (value: string) => {
-          // Allow letters, numbers, hyphens, and forward slashes
-          if (!/^[a-z0-9-\/]+$/.test(value)) {
-            return "Please use kebab-case (lowercase letters, numbers, hyphens, and forward slashes only)";
-          }
-          // Ensure no consecutive hyphens or slashes
-          if (/--/.test(value) || /\/\//.test(value)) {
-            return "Please avoid consecutive hyphens or slashes";
-          }
-          // Ensure doesn't start or end with hyphen or slash
-          if (/^[-\/]/.test(value) || /[-\/]$/.test(value)) {
-            return "Branch description cannot start or end with a hyphen or slash";
+          // More precise kebab-case validation that allows path segments
+          const kebabCaseSegmentRegex =
+            /^([a-z0-9]+(-[a-z0-9]+)*)(\/[a-z0-9]+(-[a-z0-9]+)*)*$/;
+          if (!kebabCaseSegmentRegex.test(value)) {
+            return "Please use kebab-case for each segment (lowercase letters, numbers, single hyphens between words, optional forward slashes between segments)";
           }
           return true;
         },
