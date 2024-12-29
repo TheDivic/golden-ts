@@ -1,12 +1,17 @@
 {
+  "name": "golden-ts",
+  "version": "0.0.2",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "npx husky init",
     "commit": "cz",
     "branch": "tsx scripts/create-branch.ts",
     "branches:merged": "git branch --merged main",
     "branches:pending": "git branch --no-merged main",
     "branches:clean": "git branch --merged main | grep -v '^[ *]*main$' | xargs git branch -d",
-    "test": ""
+    "release": "HUSKY=0 standard-version",
+    "release:minor": "HUSKY=0 standard-version --release-as minor",
+    "release:patch": "HUSKY=0 standard-version --release-as patch",
+    "release:major": "HUSKY=0 standard-version --release-as major"
   },
   "config": {
     "commitizen": {
@@ -14,11 +19,12 @@
     }
   },
   "devDependencies": {
+    "@types/node": "^20.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.3",
-    "@types/node": "^20.0.0",
     "enquirer": "^2.3.6",
+    "husky": "^8.0.3",
+    "standard-version": "^9.5.0",
     "tsx": "^4.7.0",
     "typescript": "^5.0.0"
   }
