@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# Skip for release commits or when HUSKY=0
+if [ "$HUSKY" = "0" ]; then
+  exit 0
+fi
+
+npx --no -- cz --hook
