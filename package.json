@@ -12,16 +12,17 @@
     "release:minor": "HUSKY=0 standard-version --release-as minor",
     "release:patch": "HUSKY=0 standard-version --release-as patch",
     "release:major": "HUSKY=0 standard-version --release-as major",
-    "release:branch": "git checkout -b release/v$npm_package_version && git push --follow-tags origin release/v$npm_package_version",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.{js,ts}\"",
     "format:check": "prettier --check \"src/**/*.{js,ts}\"",
     "build": "tsc",
+    "clean": "rm -rf dist",
     "dev": "tsx watch src/index.ts",
-    "clean": "rm -rf dist"
+    "setup": "bash scripts/setup.sh"
   },
   "config": {
     "commitizen": {
@@ -50,5 +51,9 @@
   "type": "module",
   "dependencies": {
     "pino": "^9.6.0"
+  },
+  "engines": {
+    "node": ">=20.11.1",
+    "pnpm": ">=8.0.0"
   }
 }
