@@ -5,5 +5,8 @@ pnpm format
 # Run eslint on staged files
 pnpm lint:fix
 
+# Run tests
+pnpm test:run
+
 # Add any files that were fixed by prettier or eslint
 git add .

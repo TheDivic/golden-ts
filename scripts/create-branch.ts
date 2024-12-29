@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 
 import { execSync } from "child_process";
-import { prompt } from "enquirer";
+import enquirer from "enquirer";
 
 const BRANCH_TYPES = [
   "feat",
@@ -31,7 +31,7 @@ async function main() {
     execSync("git pull origin main");
 
     // Get branch details from user
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "type",
