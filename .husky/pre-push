@@ -1,6 +1,4 @@
 #!/bin/sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # First, keep our main branch protection
 protected_branch="main"
 # Changed to get full branch name without stripping the prefix
