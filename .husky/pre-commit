@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# Run prettier on staged files
+pnpm format
+
+# Run eslint on staged files
+pnpm lint:fix
+
+# Add any files that were fixed by prettier or eslint
+git add .

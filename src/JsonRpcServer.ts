@@ -1,8 +1,15 @@
+import pino from "pino";
+
 export class JsonRpcServer {
   private isRunning: boolean = false;
+  private logger: pino.Logger;
 
   constructor() {
-    // Initialize server configuration here
+    this.logger = pino({
+      name: "json-rpc-server",
+      level: "info",
+      timestamp: pino.stdTimeFunctions.isoTime,
+    });
   }
 
   public async start(): Promise<void> {
@@ -11,12 +18,12 @@ export class JsonRpcServer {
     }
 
     try {
+      this.logger.info("Starting JSON-RPC Server...");
       // TODO: Implement actual server startup logic
-      console.log("JSON-RPC Server starting...");
       this.isRunning = true;
-      console.log("JSON-RPC Server started successfully");
+      this.logger.info("JSON-RPC Server started successfully");
     } catch (error) {
-      console.error("Failed to start JSON-RPC Server:", error);
+      this.logger.error({ error }, "Failed to start JSON-RPC Server");
       throw error;
     }
   }
@@ -27,12 +34,12 @@ export class JsonRpcServer {
     }
 
     try {
+      this.logger.info("Stopping JSON-RPC Server...");
       // TODO: Implement actual server shutdown logic
-      console.log("JSON-RPC Server stopping...");
       this.isRunning = false;
-      console.log("JSON-RPC Server stopped successfully");
+      this.logger.info("JSON-RPC Server stopped successfully");
     } catch (error) {
-      console.error("Failed to stop JSON-RPC Server:", error);
+      this.logger.error({ error }, "Failed to stop JSON-RPC Server");
       throw error;
     }
   }
